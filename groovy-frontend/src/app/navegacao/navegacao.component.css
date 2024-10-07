@@ -1,0 +1,13 @@
+.bg{
+    background: rgb(66,60,60);
+    background: radial-gradient(circle, rgba(66,60,60,1) 0%, rgba(0,0,0,1) 100%);
+    font-family: Open Sans;
+    font-weight: 800;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+
+.nav-item:hover {
+    color: rgba(255,255,255,0.6);
+}
+

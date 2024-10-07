@@ -1,0 +1,29 @@
+.bg{
+    background: rgb(66,60,60);
+    background: radial-gradient(circle, rgba(66,60,60,1) 0%, rgba(0,0,0,1) 100%);
+    font-family: Open Sans;
+    font-weight: 800;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+
+.title {
+    color: white;
+    font-size: 36px;
+    font-family: Open Sans;
+    font-weight: 800;
+    word-wrap: break-word
+}
+
+.botaocatalogo {
+    background-color: #72BCA5;
+    border-color: white;
+    transition-duration: 0.2s;
+    height: 80px; 
+    margin: 2.5% 0% 0% 2.5%; 
+    width: 22%;
+}
+
+.botaocatalogo:hover {
+    background-color: #5BA18C;
+}

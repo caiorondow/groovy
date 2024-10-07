@@ -1,0 +1,85 @@
+<section class="container-fluid vh-100 bg">
+    <div class="">
+        <h2 class="title">Explorar</h2>
+    </div>
+
+    <div class="m-3 bg-transparent">
+        <div class="form-outline form-white mb-4">
+            <input type="text" id="typeSearch" class="form-control bg-transparent text-white" placeholder="Explore novas músicas, álbuns e muito mais..." (ngModelChange)="filtrar($event)" [(ngModel)]="search"/>
+        </div>
+        
+        <div class="container">
+            <div class="row border-bottom" style="color: rgba(255, 255, 255, 0.65);">
+                <div class="col-md-2"> # </div>
+                <div class="col-md-5"> Título </div>
+                <div class="col-md-3"> Tipo</div>
+            </div>
+        </div>
+
+        <ng-container *ngFor="let item of itemsFiltered">
+            <div class="container custom-row">
+                <ng-container *ngIf="item.tipo == 'song'">
+                    <div class="row align-items-center"  (click)="onSongClick(item)">
+                        <div class="col-md-2 text-white">
+                            <i class="bi bi-file-music-fill" style="font-size:2em"></i>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="text-white">
+                                <span class="block">{{item.titulo}}</span>
+                                <span class="block" style="font-size:0.8em; color: rgba(255, 255, 255, 0.65);">{{item.artista}}</span>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-3">
+                            <div style="color: rgba(255, 255, 255, 0.65);">
+                                Música
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngIf="item.tipo == 'album'">
+                    <div class="row align-items-center"  (click)="onAlbumClick(item)">
+                        <div class="col-md-2 text-white">
+                            <i class="bi bi-disc" style="font-size:2em"></i>
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="text-white">
+                                <span class="block">{{item.titulo}}</span>
+                                <span class="block" style="font-size:0.8em; color: rgba(255, 255, 255, 0.65);">{{item.artista}}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <div style="color: rgba(255, 255, 255, 0.65);">
+                                Álbum
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngIf="item.tipo == 'playlist'">
+                    <div class="row align-items-center"  (click)="onPlaylistClick(item)">
+                        <div class="col-md-2 text-white">
+                            <i class="bi bi-list" style="font-size:2em"></i>
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="text-white">
+                                <span class="block">{{item.titulo}}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <div style="color: rgba(255, 255, 255, 0.65);">
+                                Playlist pública
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                
+            </div>
+        </ng-container>
+    </div>
+</section>

@@ -1,0 +1,106 @@
+<section class="container-fluid vh-100 bg">
+
+    <div class="container mt-3">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="image pull-left content text-center text-white">
+                    <h1>{{playlist.titulo}}</h1>
+                    <h5>{{playlist.descricao}}</h5>
+                    <h6 *ngIf="playlist.privada === true; else playlistPublica">Playlist privada</h6>
+                    <ng-template #playlistPublica>
+                        <h6>Playlist pública</h6>
+                    </ng-template>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="belongsToUser" class="container">
+        <button class="btn btn-danger btn-sm m-1"  (click)="open(deletePlaylist)">Excluir Playlist</button>
+        <button class="btn btn-primary btn-sm m-1" (click)="open(addSongs)">Adicionar músicas</button>
+    </div>
+
+    <div class="container">
+        <div class="row border-bottom" style="color: rgba(255, 255, 255, 0.65);">
+            <div class="col-md-2"> # </div>
+            <div class="col-md-2"> Título </div>
+            <div class="col-md-4"> Duração </div>
+
+        </div>
+    </div>
+
+    <ng-container *ngFor="let song of playlistSongs">
+        <div class="container ">
+            <div class="row align-items-center">
+                <div class="custom-row" style="display:contents" (click)="onSongClick(song)">
+                    <div class="col-md-2 text-white">
+                        <i class="bi bi-file-music-fill" style="font-size:2em"></i>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="text-white">
+                            <span class="block">{{song.titulo}}</span>
+                            <span class="block" style="font-size:0.8em; color: rgba(255, 255, 255, 0.65);">
+                                {{song.artista}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div style="color: rgba(255, 255, 255, 0.65);">
+                            {{song.duracao}}
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="belongsToUser" class="botao col-md-3">
+                    <button class="btn btn-danger w-50" (click)="deleteSong(song)"><i class="bi bi-trash3-fill"></i></button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</section>
+
+
+
+<!-- Modal para adicionar músicas à playlist -->
+<ng-template #addSongs let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Adicionar músicas</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body songsModal">
+        <div class="form-outline form-white mb-4">
+            <input ngbAutofocus type="text" id="typeSearch" class="form-control bg-transparent" placeholder="Pesquisar..." (ngModelChange)="filtrar($event)" [(ngModel)]="search"/>
+        </div>
+        
+        <div class="container">
+            <ng-container *ngFor="let song of allSongsFiltered">
+                <div class="row align-items-center mb-1 custom-row" (click)="addSongToPlaylist(song)">
+                    <span class="block"><b>{{song.titulo}}</b></span>
+                    <span class="block" style="font-size:0.8em;">
+                        {{song.artista}}
+                    </span>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <div class="modal-footer">
+    </div>
+</ng-template>
+
+
+<!-- Modal para adicionar músicas à playlist -->
+<ng-template #deletePlaylist let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Tem certeza?</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body ">
+        <div class="form-outline form-white mb-4">
+            <h6 ngbAutofocus >Você está prestes a excluir esta playlist. Esta ação é irreversível.</h6>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" (click)="apagarPlaylist()">Excluir</button>
+    </div>
+</ng-template>

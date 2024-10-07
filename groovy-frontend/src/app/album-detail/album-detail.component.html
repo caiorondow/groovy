@@ -1,0 +1,42 @@
+<section class="container-fluid vh-100 bg">
+
+    <div class="container mt-3 mb-3 ">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="image pull-left content text-center text-white">
+                    <h1>{{album.titulo}}</h1>
+                    <h5>{{album.artista}}</h5>
+                    <h6>{{album.anoLancamento}} / {{album.genero}}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row border-bottom" style="color: rgba(255, 255, 255, 0.65);">
+            <div class="col-md-2"> # </div>
+            <div class="col-md-2"> Título </div>
+            <div class="col-md-4"> Duração </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+    <ng-container *ngFor="let song of albumSongs">
+        <div class="container">
+            <div class="row align-items-center custom-row" (click)="onSongClick(song)">
+                <div class="col-md-2 text-white">
+                    <i class="bi bi-file-music-fill" style="font-size:2em"></i>
+                </div>
+                <div class="col-md-2">
+                    <div class="text-white">
+                        <span class="block">{{song.titulo}}</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div style="color: rgba(255, 255, 255, 0.65);">
+                        {{song.duracao}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</section>

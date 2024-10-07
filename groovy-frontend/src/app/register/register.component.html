@@ -1,0 +1,78 @@
+
+<section class="vh-100 gradient-custom">
+    <a class="m-5 text-uppercase font-groovy logo" routerLink="">Groovy</a>
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <ngb-carousel #ngcarousel [showNavigationArrows]="false" data-keyboard="false" [showNavigationIndicators]="false" [interval]=0>
+
+                <!-- Primeira parte do registro -->
+                <ng-template ngbSlide>
+                    <h2 class="title">Cadastre-se e participe da comunidade</h2>
+                    <div class="form-outline form-white mb-4">
+                        <label class="form-label text-white" for="typeNomeX">Nome e sobrenome</label>
+                        <input type="text" id="typeNomeX" class="form-control bg-transparent text-white" placeholder="Nome e sobrenome" [(ngModel)]="nome"/>
+                    </div>
+
+                    <div class="form-outline form-white mb-4">
+                        <label class="form-label text-white" for="typeUsuarioX">Nome de usuário</label>
+                        <input type="text" id="typeUsuarioX" class="form-control bg-transparent text-white" placeholder="Nome de usuário" [(ngModel)]="nomeUsuario"/>
+                    </div>
+
+                    <div class="form-outline form-white mb-4">
+                        <label class="form-label text-white" for="typeEmailX">E-mail</label>
+                        <input type="email" id="typeEmailX" class="form-control bg-transparent text-white" placeholder="email@exemplo.com" [(ngModel)]="email"/>
+                    </div>
+
+                    <div class="form-outline form-white mb-4">
+                        <label class="form-label text-white" for="typePasswordX">Senha</label>
+                        <input type="password" id="typePasswordX" class="form-control bg-transparent text-white" placeholder="Senha" [(ngModel)]="password"/>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-outline-warning rounded-5 align-center px-5" (click)="goToNext()">Avançar</button>
+                        <p class="small mb-5 mt-3 pb-lg-2 text-white">Já possui uma conta? <a class="text-white-50" routerLink="/login">Faça login.</a></p>
+                    </div>
+                
+                </ng-template>
+
+                <!-- Segunda parte do registro -->
+                <ng-template ngbSlide>
+                    <h2 class="title">Nos ajude a entender o que você gosta</h2>
+                    <ng-container>
+                        <p class="small text-white"> Selecionados:</p>
+                        <div class="card bg-transparent border rounded mb-3">
+                            <div class="container">
+                                <ng-container *ngFor="let genero of generos, let i=index">
+                                    <button *ngIf="genero.selecionado" class="btn btn-light btn-sm m-1" (click)="selecionarGenero(i)">
+                                        {{genero.nome}}
+                                    </button>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </ng-container>
+                    <div class="card bg-transparent border rounded mb-3">
+                        <div class="container">
+                            <div class="m-3">
+                                <ng-container *ngFor="let genero of generos, let i=index">
+                                    <button *ngIf="!genero.selecionado" class="btn botaopainel" (click)="selecionarGenero(i)">
+                                        {{genero.nome}}
+                                    </button>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="float-start">
+                        <button class="btn btn-outline-light rounded-5 align-center px-3" (click)="getToPrev()"><i class="bi bi-arrow-left m-1"></i>Voltar</button>
+                    </div>
+                    <div class="float-end">
+                        <button class="btn btn-outline-success rounded-5 align-center px-3" (click)="registrar()">Concluir</button>
+                    </div>
+
+                </ng-template>
+
+            </ngb-carousel>
+        </div>
+      </div>
+    </div>
+  </section>

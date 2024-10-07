@@ -1,0 +1,20 @@
+:host {
+    display: block;
+    background-color: #72bca5;
+    background-image: url(../../assets/icons/vinil.png);
+    background-position: 10px 0px;
+    background-size:80px;
+    overflow-y: auto;
+}
+.gradient-custom {
+    display: block;
+    background-color: #72bca5;
+    background-image: url(../../assets/icons/vinil.png);
+    background-position: 10px 0px;
+    background-size:80px;
+    overflow-y: auto;
+}
+.formbrown {
+    background: rgb(74, 37, 18);
+    border-radius: 1rem;
+}

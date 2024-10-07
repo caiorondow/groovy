@@ -1,0 +1,53 @@
+.bg{
+    background: rgb(188, 11, 39);
+    background: radial-gradient(circle, rgba(188, 11, 39,0.6) 0%, rgba(0,0,0,1) 100%);
+    font-family: Open Sans;
+    font-weight: 800;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+
+.title {
+    color: white;
+    font-size: 36px;
+    font-family: Open Sans;
+    font-weight: 800;
+    word-wrap: break-word
+}
+
+.card {
+    background: #fff;
+    display: inline-block;
+    width:100%;
+    border:0;
+  }
+
+.image {
+  background: #BC0B27;
+  width: 100%;
+  height: 200px;
+}
+
+.content {
+  vertical-align:bottom;
+}
+
+.content h4 {
+  margin: 5px 0;
+}
+
+
+.custom-row:hover {
+  cursor: pointer;
+  background: rgba(199, 188, 188, 0.4);
+}
+
+
+.songsModal{
+  height: 60vh;
+  overflow-y: auto;
+}
+
+.text-white span.block {
+    display: block;
+  }

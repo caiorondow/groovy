@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: Monoton;
+    src:url("./assets/fonts/Monoton-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Open Sans;
+    src:url("./assets/fonts/open-sans.regular.ttf") format("truetype");
+}
+
+
+.font-groovy {
+    font-family: Monoton;
+    color: #D9D9D9;
+    font-weight:400;
+    font-size: 40px;
+}
+
+.logo {
+    text-decoration: none;
+}
+
+.logo:hover {
+    color:rgba(255,255,255,0.6);
+}

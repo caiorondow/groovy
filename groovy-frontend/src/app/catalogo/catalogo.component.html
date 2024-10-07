@@ -1,0 +1,13 @@
+<section class="container-fluid vh-100 bg">
+    <div class="">
+        <h2 class="title">Catálogo</h2>
+    </div>
+
+    <div class="m-3">
+        <ng-container *ngFor="let song of songs">
+            <button class="botaocatalogo btn" (click)="onSongClick(song)">
+                {{song.titulo}} - {{song.artista}}
+            </button>
+        </ng-container>
+    </div>
+</section>

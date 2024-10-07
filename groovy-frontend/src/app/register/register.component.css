@@ -1,0 +1,38 @@
+.gradient-custom {
+    display: block;
+    background: rgb(143,42,43);
+    background: radial-gradient(circle, rgba(143,42,43,1) 0%, rgba(0,0,0,1) 90%);
+    overflow-y: auto;
+}
+
+.title {
+    color: white;
+    font-size: 36px;
+    font-family: Open Sans;
+    font-weight: 800;
+    word-wrap: break-word
+}
+
+/* Alterando a cor do placeholder dos inputs */
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    opacity: 1;
+}
+
+.form-control::-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.botaopainel {
+    background-color: #f1ae2b;
+    border-color: white;
+    transition-duration: 0.2s;
+    height: 80px; 
+    margin: 2.5% 0% 0% 2.5%; 
+    width: 30%;
+}
+
+.botaopainel:hover {
+    background-color: #ECA009;
+}
+

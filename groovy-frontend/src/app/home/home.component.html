@@ -1,0 +1,31 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-3" style="padding:0">
+      <app-navegacao (menuItemSelected)="onMenuItemSelected($event)" (playlistSelected)="onPlaylistSelected($event)"></app-navegacao>
+    </div>
+    <div class="col-lg-9" style="padding-left:2px">
+      <ng-container *ngIf="selectedMenuItem === 'catalogo'">
+        <app-catalogo (songSelected)="onSongSelected($event)"></app-catalogo>
+      </ng-container>
+      <ng-container *ngIf="selectedMenuItem === 'explorar'">
+        <app-explore (playlistSelected)="onPlaylistSelected($event)" (albumSelected)="onAlbumSelected($event)" (songSelected)="onSongSelected($event)"></app-explore>
+      </ng-container>
+      <ng-container *ngIf="selectedMenuItem === 'song'">
+        <app-song-detail [song]="song"></app-song-detail>
+      </ng-container>
+      <ng-container *ngIf="selectedMenuItem === 'playlist'">
+        <app-playlist-detail (songSelected)="onSongSelected($event)" [playlist]="playlist"></app-playlist-detail>
+      </ng-container>
+      <ng-container *ngIf="selectedMenuItem === 'add-playlist'">
+        <app-add-playlist></app-add-playlist>
+      </ng-container>
+      <ng-container *ngIf="selectedMenuItem === 'user-profile'">
+        <app-user-profile></app-user-profile>
+      </ng-container>
+      <ng-container *ngIf="selectedMenuItem === 'album'">
+        <app-album-detail (songSelected)="onSongSelected($event)" [album]="album"></app-album-detail>
+      </ng-container>
+    </div>
+  </div> 
+</div>

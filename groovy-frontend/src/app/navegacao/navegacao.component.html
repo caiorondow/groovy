@@ -1,0 +1,56 @@
+
+<div class="container-fluid bg vh-100" >
+    <div class="e-panel card bg-transparent border mb-3 mt-3">
+        <ul type="none" style="color: white">
+            <li>
+                Groovy
+            </li>
+            <li class="nav-item">
+                <i class="bi bi-house-door m-3"></i>
+                <a type="button" (click)="onItemClick('catalogo')">
+                    Catálogo
+                </a>
+            </li>
+            <li class="nav-item">
+                <i class="bi bi-compass m-3"></i>
+                <a type="button" (click)="onItemClick('explorar')">
+                    Explorar
+                </a>
+            </li>
+       </ul>
+    </div>
+    <div class="e-panel card bg-transparent border mb-3">
+        <ng-container *ngIf="authStatus === false; else showPlaylists" >
+            <button type="button" class="btn btn-sm btn-success" routerLink="login">Login</button>
+        </ng-container>
+        
+        <ng-template #showPlaylists>
+            <ul type="none" style="color: white">
+                <li class="mt-3 nav-item">
+                    <a type="button" (click)="onItemClick('user-profile')">
+                        <i class="bi bi-person-circle m-3"></i>
+                        Meu perfil
+                    </a>
+                </li>
+                <li class="mt-3">
+                    Minhas Playlists
+                    <div class="nav-item">
+                        <a type="button" (click)="onItemClick('add-playlist')">
+                            <i class="bi bi-plus m-3" style="font-size: 1.5em;"></i>
+                        </a>
+                    </div>
+                </li>
+                <ng-container *ngFor="let playlist of playlists">
+                    <li class="mt-1 nav-item">
+                        <a type="button" (click)="onPlaylistClick(playlist)">
+                            <i class="bi bi-list m-1"></i>
+                            {{playlist.titulo}}
+                        </a>
+                    </li>
+                </ng-container>
+            </ul>
+            <button type="button" class="btn btn-sm btn-danger" (click)="logOut()">Logout</button>
+        </ng-template>
+    </div>
+
+</div>

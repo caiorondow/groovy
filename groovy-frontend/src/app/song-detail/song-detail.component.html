@@ -1,0 +1,94 @@
+<section class="container-fluid vh-100 bg">
+    
+    <div class="container mt-3">
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="image pull-left">
+  
+                </div>
+                <div class="content pull-left">
+                    <h1>{{song.titulo}}</h1> 
+                    <h6>{{song.artista}} / {{song.anoLancamento}} / {{song.genero}}</h6>
+                    <h3 class="pontuacao" *ngIf="songRating != 0">
+                        {{songRating}}☆<div style="font-size: 0.55em">({{numRatings}})</div>
+                    </h3>
+                    <br>
+                </div>
+                <div *ngIf="authStatus === true" class="rating" style="float:right">
+                    <input type="radio" (change)="changed($event)" name="rating" value="5" id="5"><label for="5">☆</label>
+                    <input type="radio" (change)="changed($event)" name="rating" value="4" id="4"><label for="4">☆</label>
+                    <input type="radio" (change)="changed($event)" name="rating" value="3" id="3"><label for="3">☆</label>
+                    <input type="radio" (change)="changed($event)" name="rating" value="2" id="2"><label for="2">☆</label>
+                    <input type="radio" (change)="changed($event)" name="rating" value="1" id="1"><label for="1">☆</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="text-center mt-3" id="frameSpinner">
+                    <div class="spinner-grow text-warning " role="status">
+                        <span class="visually-hidden"></span>
+                      </div>
+                </div>
+
+                <div class="text-white">
+                    <div id="frame">
+
+                    </div>
+                    <div id="cifra" class="mt-3 mb-3" style="display:none">
+                        <a class="btn w-100 botaocifra" id="aCifra" target="_blank">Acesse a cifra<i class="m-3 bi bi-music-note-beamed"></i></a>
+                    </div>
+                </div>
+
+
+                <div class="text-center mt-3" id="lyricsSpinner">
+                    <div class="spinner-grow text-warning " role="status">
+                        <span class="visually-hidden"></span>
+                      </div>
+                </div>
+
+                <h6>
+                    <pre class="text-white" style="font-family: Open Sans; white-space: pre-line; font-size:1.1em">
+                        {{letra}}
+                    </pre>
+                </h6>
+            </div>
+            <div class="col-md-6">
+                <div class="e-panel card border mb-3 mt-1 p-3">
+                    <ng-container *ngIf="authStatus === true; else notLoggedIn" >
+                        <h6>
+                            <i class="bi bi-person-circle" style="font-size:1.5em"></i>
+                            {{userName}}
+                        </h6>
+                        <textarea class=" p-3" style="resize:none; width:100%; border-radius: 5px;" placeholder="Digite seu comentário..." [(ngModel)]="textoComentario"></textarea>
+                        <button class="btn btn-primary btn-sm" style="float:right;" (click)="submitComment()">Enviar</button>
+                    </ng-container>
+                    
+                    <ng-template #notLoggedIn>
+                        <h6>Faça login para avaliar ou comentar.</h6>
+                        <button type="button" class="btn btn-sm btn-success" routerLink="login">Login</button>
+                    </ng-template>
+                </div>
+
+                <ng-container *ngFor="let comentario of comentarios">
+                    <div class="e-panel card border mb-3 mt-1 p-3">
+                        <h6>
+                            <i class="bi bi-person-circle" style="font-size:1.5em"></i>
+                            {{comentario.username}} 
+                            em 
+                            {{comentario.data.toLocaleString('br')}}
+
+                        </h6>
+                       <p>{{comentario.texto}}</p>
+                    </div>
+                </ng-container>
+
+            </div>
+        </div>
+    </div>
+</section>
